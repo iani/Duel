@@ -18,7 +18,7 @@ Duel.display;
 ~tactic = {|tactic, func|
 	~turn = ~turn + 1;
 	("Turn" + ~turn).postln;
-	~turnTxt.string = ~length - ~turn;
+	\duel.changed(\turnText, format("%(%)", ~total, ~length - ~turn));
 	~calcProfit.(tactic);
 	~colMatrix.(tactic);
 	~prevTactics[~player] = tactic;
@@ -27,25 +27,25 @@ Duel.display;
 	t = ["PHOENIX", "ALBATROSS"][~game + ~turn % 2] + "chose Tactic" + tactic;
 	t.postln;
 	o = ~scores.rotate(~game + 1);
-	(o[0] + ":" + o[1]).postln;
-	2.do{|i| ~scoTxt[i].string = o[i] };
-	~playerTxt[~turn + ~game - 1 % 2].background = Color.new(1, 0.8, 0);
-	~playerTxt[~turn + ~game % 2].background = Color.white;
+	("Score" + o[0] + ":" + o[1]).postln;
+	\duel.changed(\score, [o]);
+	\duel.changed(\changePlayer, ~game + ~turn + 1);
 
 	// Finish the game
 	if(~turn == ~length, {
-		~payTxt.do{|e| e.background = Color.white };
-		2.do{|i| ~playerTxt[i].background = Color.white };
+
+		\duel.changed(\clearPay);
+		\duel.changed(\clearPlayer);
 		if(o[0] == o[1], {
 			"DRAW".postln;
-			2.do{|i| ~winnerTxt[i].string = "DRAW" };
+			\duel.changed(\draw);
 		}, {
 			if(o[0] > o[1], {
 				"PHOENIX WINS".postln;
-				~winnerTxt[0].string = "WINNER";
+				\duel.changed(\winner, 0);
 			}, {
 				"ALBATROSS WINS".postln;
-				~winnerTxt[1].string = "WINNER";
+				\duel.changed(\winner, 1);
 			});
 		});
 	});
@@ -60,7 +60,8 @@ t.postln;
 
 t = ["PHOENIX", "ALBATROSS"][~game];
 t = "FIRST ATTACK : " ++ t;
-~playerTxt[~game].background = Color.new(1, 0.8, 0);
+// ~playerTxt[~game].background = Color.new(1, 0.8, 0);
+\duel.changed(\changePlayer, ~game);
 t.postln;
 
 // OscGroups.enable;

@@ -20,6 +20,16 @@ wb = ~wd.bounds;
 	txt.font = Font("Arial", 25);
 	txt.align = \center;
 	txt.string = ["PHOENIX", "ALBATROSS"][i];
+	txt.addNotifier(\duel, \changePlayer, { |notif, turn|
+		if(turn % 2 == i, {
+			txt.background = Color.new(1, 0.8, 0);
+		}, {
+			txt.background = Color.white;
+		});
+	});
+	txt.addNotifier(\duel, \clearPlayer, { |notif|
+		txt.background = Color.white;
+	});
 });
 
 ~scoTxt = Array.fill(2, {|i|
@@ -28,6 +38,9 @@ wb = ~wd.bounds;
 	txt.stringColor = Color.black;
 	txt.font = Font("Arial", 100);
 	txt.align = \center;
+	txt.addNotifier(\duel, \score, { |notif, score, morestuff|
+		txt.string = score[i];
+	});
 });
 
 ~winnerTxt = Array.fill(2, {|i|
@@ -36,6 +49,14 @@ wb = ~wd.bounds;
 	txt.stringColor = Color.red;
 	txt.font = Font("Arial", 30);
 	txt.align = \center;
+	txt.addNotifier(\duel, \draw, { |notif|
+		txt.string = "DRAW";
+	});
+	txt.addNotifier(\duel, \winner, { |notif, winner |
+		if(winner == i, {
+			txt.string = "WINNER";
+		});
+	});
 });
 
 // Payoff Matrix
@@ -49,6 +70,9 @@ cb = cv.bounds;
 	txt.font = Font("Arial", 30);
 	txt.align = \center;
 	txt.string = ~xmat.flatten[i];
+	txt.addNotifier(\duel, \clearPay, { |notif|
+		txt.background = Color.white;
+	});
 });
 
 // Change color of cells
@@ -83,13 +107,13 @@ row.do{|i|
 };
 
 // Labels of players
-~labelY = StaticText(~wd, Rect(40, 0, cb.width, 40));
+~labelY = StaticText(~wd, Rect(120, 0, cb.width-80, 40));
 ~labelY.background = Color.gray(0.9);
 ~labelY.stringColor = Color.black;
 ~labelY.font = Font("Arial", 20);
 ~labelY.align = \center;
 
-~labelX = StaticText(~wd, Rect(0, 40, 40, cb.height));
+~labelX = StaticText(~wd, Rect(0, 80, 40, cb.height-40));
 ~labelX.background = Color.gray(0.9);
 ~labelX.stringColor = Color.black;
 ~labelX.font = Font("Arial", 20);
@@ -110,7 +134,10 @@ row.do{|i|
 	~labelX.string = a;
 };
 
-~turnTxt = StaticText(~wd, Rect(0, 0, 40, 40));
+~turnTxt = StaticText(~wd, Rect(0, 0, 80, 40));
 ~turnTxt.stringColor = Color.black;
 ~turnTxt.font = Font("Arial", 30);
 ~turnTxt.align = \center;
+~turnTxt.addNotifier(\duel, \turnText, { |notif, value|
+	notif.listener.string = value;
+})
