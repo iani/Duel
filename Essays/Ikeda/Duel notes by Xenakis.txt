@@ -1,0 +1,91 @@
+# Extracted from the score by Google Document OCR 
+
+
+IANNIS XENAKIS : DUEL
+
+Instrumentation 
+
+1 petite flûte, 1 hautbois, 1 clarinette mib., 1 clarinette basse sib., 1 basson, 1 contrebasson, 2 trompettes, 1 trombone, 
+Percussion : 2 bongos, 3 congas, 1 caisse claire, 1 tambour 
+Cordes : 6.6.0.4.2.
+
+Durée de l'exécution : suivant le sort du jeu.
+
+Le matériel comprend : 
+
+- 2 partitions d'orchestre (pages séparées) 
+- 3 exemplaires de la matrice du jeu 
+- 3 exemplaires des règles du jeu y compris le plan de commande électrique 
+- 2 assortiments de 23 cartes alphabétiques A - W 
+
+Les deux matériels d'orchestre sont disponibles en location.
+
+
+Règles du jeu musical 
+
+Duel est un jeu musical pour deux chefs et deux orchestres, commandé par l'O.R.T.F. et composé en 1959.
+
+Deux orchestres placés à gauche et à droite sur la scène avec deux chefs qui se tournent le dos, ou sur deux plateaux diamétralement opposés, peuvent choisir et jouer une des six constructions sonores, numérotées dans la partition de I à VI, que nous nommerons tactiques, qui sont de structure stochastique (= probabiliste). Outre ces six tactiques fondamentales, chacun des chefs peut faire jouer par son orchestre certaines combinaisons simultanées, par deux ou par trois des tactiques fondamentales. Voici la liste des six tactiques fondamentales :
+
+- I	Pointillisme des cordes 
+- II	Tenues des cordes 
+- III	Glissandi croisés des cordes 
+- IV	Percussion normale 
+- V	Vents 
+- VI	Silence
+
+Voici maintenant les dix combinaisons simultanément compatibles de ces tactiques (valables pour chacun des deux orchestres) :
+
+- I ou II ou III = A 
+- A et IV ou A et V ou IV et V = B
+- IV et V et A = C
+
+Il existe donc en tout 6 tactiques que chacun des chefs peut faire exécuter par son orchestre, les A, B, C, IV, V, VI. Par conséquent, les deux chefs peuvent faire jouer 6 x 6 = 36 différents couples simultanés.
+
+A chacun des 36 couples est attribué un nombre entier positif ou négatif qui représente, suivant l'appréciation du compositeur, les points (= règlements partiels) que gagne ou que perd l'un des chefs que nous appellerons X. Ces nombres sont inscrits dans un tableau à double entrée à l'intersection de 6 lignes et de 6 colonnes. Les 6 lignes représentent les tactiques possibles du chef X et les 6 colonnes, celles de son adversaire que nous appellerons Y. Tous les nombres positifs seront des gains pour X et des pertes pour Y et symétriquement, puisque ce jeu est un dual, tous les nombres négatifs représentent des pertes pour X et des gains pour Y. Nous appellerons ce tableau MATRICE DE JEU. Ce jeu a été mathématiquement vérifié et sa valeur est V = 0,07. Ceci signifie qu'à la fin du jeu (cu règlement final), il faudra déduire du gain (perte) de y un nombre V.n * 0,07n de points qui seront ajoutés au gain (perte) de x, n'étant le nombre total des étapes.
+
+Le jeu musical DUEL consiste donc dans le choix et l'exécution par un chef x d'une des 6 tactiques-lignes pendant que l'autre chef y joue une des 6 tactiques-colonne ; et réciproquement, pendant que x joue une des 6 tactiques-lignes, Y choisit et joue contre lui une des 6 tactiques-colonnes etc... Ainsi le jeu se présente comme l'exécution successive des différents couples qui résultent des tactiques jouées simultanément par les deux orchestres selon le choix effectué alternativement par chaque chef, sans interruption.
+
+I - Choix des Tactiques : comment les chefs choisiront-ils les tactiques à jouer ? Ils peuvent les choisir de plusieurs façons. Exemples : d'une façon arbitraire, sans tenir compte de la Matrice de Jeu et en suivant leur intuition, ou bien en tirant à chaque fois une carte d'un jeu de 6 cartes, ou bien en pondérant le tirage en tirant d'une urne des billes portant des numéros de l à 6, mais en proportions différentes, ou bien après s'être concertés à l'avance, ils dirigent une succession fixe, ou bien la direction des deux orchestre est confiée à un seul chef qui applique une des façons précédentes. En fait, toutes ces façons constituent des situations conflictuelles "dégénérées".
+
+La seule valable, la seule qui apporte quelque chose de nouveau, dans le cas de plusieurs orchestres, est celle qui est sanctionnée par des gains et des pertes, par des victoires et des défaites.
+
+Ainsi, dans le cas de DUEL, les chefs devront suivre les points (gains et pertes) inscrits dans la matrice du Jeu. Par exemple, le chef qui débute par une tactique est contre-attaqué par le chef adverse à l'aide d'une tactique qui lui fera gagner le maximum de points et ainsi de suite. En fait, chacun devra prévoir plusieurs coups futurs de son adversaire pour pouvoir choisir la meilleure succession de tactiques, comme par exemple au jeu d'échecs.
+
+Chaque chef annonce à son orchestre la prochaine tactique à jouer de plusieurs façons, mais s'il a à sa disposition les moyens techniques décrits sur le schéma, cette annonce sera faite à l'aide d'une signalisation lumineuse à quatre couleurs qu'il actionnera au moyen d'une boite de commande (voir schéma de commande électrique).
+
+II - Limitation du Jeu : le jeu est limité en général de plusieurs manières : 
+
+a) les chefs se fixent un nombre de coups défini à l'avance : soit "n" coups. Celui qui a obtenu le maximum de points à la fin du nième coup est le gagnant. 
+
+b) les chefs se fixent une limite supérieure de points. Celui qui y parvient le premier est gagnant. 
+
+c) ils se fixent une durée totale du jeu, soit "m" seconces (ou minutes) et celui qui a le plus grand nombre de points à la mième seconde (ou minute) est gagnant.
+
+III - L'attribution des points : elle peut se faire de deux manières : 
+
+a) il existe un arbitre qui compte les points sur deux tcolonnes : l'une pour le chef X, dans laquelle seront inscrits les nombres positifs, et l'autre pour le chef Y, dans laquelle seront inscrits les nombres négatifs. C'est l'arbitre qui annonce les résultats au public. 
+
+b) il n'y a pas d'arbitre mais un système automatique de signalisation qui consiste en un tableau individuel pour cnacun des chefs avec le boutons correspondants aux tactiques de la matrice utilisée. Ces boutons sont reliés à des tableaux de signalisation à l'adresse des groupes d'orchestre ainsi qu'à une petite additionneuse qui totalisera les résultats sur un panneau électrique de manière qu'ils soient visibles par le public au fur et à mesure du déroulement du jeu à la manière des panneaux des stades, à une échelle bien entendu, réduite (cf. scnéma de signalisation en annexe).
+
+IV - L'attribution des lignes - (et des colonnes) se fait par un jeu de pile ou face entre les deux chefs.
+
+V - Désignation du premier partant. Le chef qui ouvre le jeu est désigné par un nouveau jeu de pile ou face.
+
+VI - Lecture des tactiques (partitions). Elles sont jouées cycliquement en boucle. fermée. Ainsi l'arrêt d'une tactique se fait instantanément sur une barre de mesure laissée au choix du chef. La reprise ultérieure éventuelle de cette tactique peut se faire :
+
+a) soit à partir de la barre de mesure précédemment définie. 
+
+b) soit à partir de la barre de mesure surmontée d'une lettre que le chef annoncera visuellement en expoaant à l'orchestre une carte de taille suffisante issue d'un jeu de lettres mis à sa disposition. Avec 'un jeu de lettres de A à W, le chef dispose de 23 entrées différentes pour chacune des tactiques. 
+
+Les tactiques dans la partition ont des durées d'au moins deux minutes. Arrivés à la fin de la tactique, les chefs recommencent à son début. D'où le "da capo" inscrit sur les partitions. Les tempi et les nuances d'ensemble sont laissées au choix de chacun des chefs, dans les limites indiquées par la partition.
+
+
+VII - Durée des coups. La durée de chaque coup est facultative. Toutefois, il est bon de définir une limite inférieure de l'ordre de 10 secandes. C'est-à-dire que, si un chef engage une tactique, il doit la maintenir pendant au mois 10 secondes. Ces 10 secondes peuvent varier de concert à concert. Elle constitue un souhait de la part du compositeur mais pas une obligation et les chefs ont le droit de décider avant le jeu de la durée limite inférieure de chaque coup. La limite supérieure n'existe pas car le jeu conditionne le maintien ou le changement d'une tactique. En cas de non respect des conventions, des pénalités sont à prévoir par les deux chefs.
+
+VIII - Issue du combat. Pour accuser la structure duale de cette composition et pour rendre hommage au chef qui suit le plus fidèlement le conditionnement imposé par l'auteur au moyen de la Matrice du Jeu, on peut admettre à la fin du combat : 
+
+a) la proclamation du vainqueur, 
+b) l'attribution d'un prix, bouquet de fleurs ou coupe ou médaille, que l'organisateur du concert voudra bien remettre à la disposition des chefs.
+
+IX - En conclusion : le chef perdant ne doit absolument pas être considéré comme moins bon que le gagnant. C'est en cela que ce jeu musical (artistique) diffère radicalement, par définition, des jeux athlétiques ou des jeux de cartes. Le gagnant a gagné parcequ'il a simplement mieux suivi les règles du jeu imposées par le compositeur qui, par conséquent, revendique la responsabilité du "beau" ou du "laid" de sa musique. Le jeu de DUEL est en définitive une superstructure qui coiffe des structures stochastiques, imaginé de façon à ce qu'aucun couple de tactiques opposées ne soit laia. La généralisation de cette idée serait de permettre la participation active du public, qui, par un scrutin collectif, établirait la Matrice du Jeu. Mais cette expérience pourrait être tentée ultérieurement. Par contre, les paris sont ouverts ....
