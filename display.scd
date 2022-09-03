@@ -28,6 +28,13 @@ wb = ~wd.bounds;
 	txt.stringColor = Color.black;
 	txt.font = Font("Arial", 100);
 	txt.align = \center;
+	txt.addNotifier(\duel, \score, { | n, score, morestuff |
+		"debugging score arguments.".postln;
+		postln("n is" + n);
+		postln("score is" + score);
+		postln("morestuff is" + morestuff);
+		txt.string = score[i];
+	})
 });
 
 ~winnerTxt = Array.fill(2, {|i|
@@ -110,7 +117,12 @@ row.do{|i|
 	~labelX.string = a;
 };
 
-~turnTxt = StaticText(~wd, Rect(0, 0, 40, 40));
+~turnTxt = StaticText(~wd, Rect(0, 0, 80, 40));
 ~turnTxt.stringColor = Color.black;
 ~turnTxt.font = Font("Arial", 30);
 ~turnTxt.align = \center;
+~turnTxt.addNotifier(\duel, \turnText, { | n, value |
+	"Explaining how we communicate turnText to the display: ".post;
+	[n, value].postln;
+	n.listener.string = value;
+})
