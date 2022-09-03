@@ -17,7 +17,7 @@
 		oddment[~prevTactics[~player]] = 0;		// Avoid repetition of the same tactic
 	});
 	oddment = oddment.normalizeSum;
-	(0..~dim-1).wchoose(oddment);
+	(0..6).wchoose(oddment);
 };
 
 ~getMaxval = {|move|
@@ -36,31 +36,32 @@
 		oddment[~prevTactics[~player]] = 0;		// Avoid repetition of the same tactic
 	});
 	oddment = oddment.normalizeSum;
-	(0..~dim-1).wchoose(oddment);
+	(0..6).wchoose(oddment);
 };
 
 
 // ===== FUNCTIONS =====
 
 ~setup = {
-	// ~xmat = [];
-	//
-	// 7.do{
-	// 	a = [];
-	// 	7.do{
-	// 		b = [-1,1].choose * [3,5,7].choose;
-	// 		a = a.add(b);
-	// 	};
-	// 	~xmat = ~xmat.add(a);
-	// };
+	~xmat = [];
+
+	7.do{
+		a = [];
+		7.do{
+			b = [-1,1].choose * [3,5,7].choose;
+			a = a.add(b);
+		};
+		~xmat = ~xmat.add(a);
+	};
 
 	~xmat = [
-		[-1, 1, 3, -1, 1, -1],
-		[1, -1, 3, -1, 1, -1],
-		[2, -1, -3, 3, 1, -3],
-		[-1, 3, 1, -2, -3, -1],
-		[-1, 1, 2, 1, 1, -1],
-		[-2, -2, -5, 1, -2, 3]
+		[5, -3, 5, -3, 7, 7, 3],
+		[5, -5, 5, 5, 7, -5, -5],
+		[5, 5, -7, 5, -7, 7, -7],
+		[-3, 5, -3, -3, 7, 7, 3],
+		[-7, 5, 5, -7, 7, 7, -7],
+		[-7, 5, 5, -7, 7, -7, -7],
+		[5, -7, 5, 5, -7, 7, -7],
 	];
 
 	// ~xmat.postln;
@@ -69,7 +70,6 @@
 	~mat = [~xmat, ~ymat];
 	~cells = [];
 	~xWon = 0;
-	~dim = ~xmat.size;
 };
 
 ~calcProfit = {|tactic|
@@ -86,7 +86,7 @@
 
 ~addCell = {|move|
 	if(move > 0, {
-		var cellIndex = ~prevTactics[0] * ~dim + ~prevTactics[1];
+		var cellIndex = ~prevTactics[0]*7 + ~prevTactics[1];
 		~cells = ~cells.add(cellIndex);
 	});
 };
@@ -96,7 +96,7 @@
 };
 
 ~countCells = {
-	var freq = Array.fill2D(~dim, ~dim, {|row, col| row * ~dim + col});
+	var freq = Array.fill2D(7, 7, {|row, col| row*7+col});
 	freq = freq.collect{|f| f.collect{|e| ~cells.count{|c| c == e }}};
 	freq.do{|f| f.do{|e| (e+"\t").post}; "".postln };
 };
