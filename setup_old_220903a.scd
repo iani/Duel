@@ -23,13 +23,13 @@ Duel.display;
 	~prevTactics[~player] = tactic;
 	~switchPlayers.();
 
-	t = ["PHOENIX", "ALBATROSS"][~chef + ~turn % 2] + "chose Tactic" + tactic;
+	t = ["PHOENIX", "ALBATROSS"][~game + ~turn % 2] + "chose Tactic" + tactic;
 	t.postln;
-	o = ~scores.rotate(~chef + 1);
+	o = ~scores.rotate(~game + 1);
 	(o[0] + ":" + o[1]).postln;
 	2.do{|i| ~scoTxt[i].string = o[i] };
-	~playerTxt[~turn + ~chef - 1 % 2].background = Color.new(1, 0.8, 0);
-	~playerTxt[~turn + ~chef % 2].background = Color.white;
+	~playerTxt[~turn + ~game - 1 % 2].background = Color.new(1, 0.8, 0);
+	~playerTxt[~turn + ~game % 2].background = Color.white;
 
 	// Finish the game
 	if(~turn == ~length, {
@@ -54,12 +54,12 @@ Duel.display;
 	func.value;
 };
 
-t = "ROUND " ++ ~round;
+t = "ROUND " ++ ~total;
 t.postln;
 
-t = ["PHOENIX", "ALBATROSS"][~chef];
+t = ["PHOENIX", "ALBATROSS"][~game];
 t = "FIRST ATTACK : " ++ t;
-~playerTxt[~chef].background = Color.new(1, 0.8, 0);
+~playerTxt[~game].background = Color.new(1, 0.8, 0);
 t.postln;
 
 // OscGroups.enable;

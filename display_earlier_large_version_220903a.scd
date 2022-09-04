@@ -76,7 +76,7 @@ cb = cv.bounds;
 ~labelX.background = Color.gray(0.9);
 
 ~labelPlayers = {
-	t = ["PHOENIX", "ALBATROSS"].rotate(~chef);
+	t = ["PHOENIX", "ALBATROSS"].rotate(~game);
 	~labelY.string = t[0];
 	a = "";
 	d = t[1].ascii;

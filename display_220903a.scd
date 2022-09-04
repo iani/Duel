@@ -1,3 +1,7 @@
+/* 29 Aug 2022 22:39
+New version by Takumi Ikeda
+*/
+
 var col, row, wb, cv, cb;
 col = ~xmat[0].size;
 row = ~xmat.size;
@@ -16,16 +20,6 @@ wb = ~wd.bounds;
 	txt.font = Font("Arial", 25);
 	txt.align = \center;
 	txt.string = ["PHOENIX", "ALBATROSS"][i];
-	txt.addNotifier(\duel, \changePlayer, { |notif, turn|
-		if(turn % 2 == i, {
-			txt.background = Color.new(1, 0.8, 0);
-		}, {
-			txt.background = Color.white;
-		});
-	});
-	txt.addNotifier(\duel, \clearPlayer, { |notif|
-		txt.background = Color.white;
-	});
 });
 
 ~scoTxt = Array.fill(2, {|i|
@@ -34,9 +28,13 @@ wb = ~wd.bounds;
 	txt.stringColor = Color.black;
 	txt.font = Font("Arial", 100);
 	txt.align = \center;
-	txt.addNotifier(\duel, \score, { |notif, score|
+	txt.addNotifier(\duel, \score, { | n, score, morestuff |
+		"debugging score arguments.".postln;
+		postln("n is" + n);
+		postln("score is" + score);
+		postln("morestuff is" + morestuff);
 		txt.string = score[i];
-	});
+	})
 });
 
 ~winnerTxt = Array.fill(2, {|i|
@@ -45,14 +43,6 @@ wb = ~wd.bounds;
 	txt.stringColor = Color.red;
 	txt.font = Font("Arial", 30);
 	txt.align = \center;
-	txt.addNotifier(\duel, \draw, { |notif|
-		txt.string = "DRAW";
-	});
-	txt.addNotifier(\duel, \winner, { |notif, winner |
-		if(winner == i, {
-			txt.string = "WINNER";
-		});
-	});
 });
 
 // Payoff Matrix
@@ -66,9 +56,6 @@ cb = cv.bounds;
 	txt.font = Font("Arial", 30);
 	txt.align = \center;
 	txt.string = ~xmat.flatten[i];
-	txt.addNotifier(\duel, \clearPay, { |notif|
-		txt.background = Color.white;
-	});
 });
 
 // Change color of cells
@@ -103,25 +90,23 @@ row.do{|i|
 };
 
 // Labels of players
-~labelY = StaticText(~wd, Rect(120, 0, cb.width-80, 40));
+~labelY = StaticText(~wd, Rect(40, 0, cb.width, 40));
 ~labelY.background = Color.gray(0.9);
 ~labelY.stringColor = Color.black;
 ~labelY.font = Font("Arial", 20);
 ~labelY.align = \center;
 
-~labelX = StaticText(~wd, Rect(0, 80, 40, cb.height-40));
+~labelX = StaticText(~wd, Rect(0, 40, 40, cb.height));
 ~labelX.background = Color.gray(0.9);
 ~labelX.stringColor = Color.black;
 ~labelX.font = Font("Arial", 20);
 ~labelX.align = \center;
 
 ~labelPlayers = {
-	t = ["PHOENIX", "ALBATROSS"];	// Fix the position of PHOENIX and ALBATROSS
-	// t = ["PHOENIX", "ALBATROSS"].rotate(~chef);
-
-	~labelY.string = t[1];
+	t = ["PHOENIX", "ALBATROSS"].rotate(~game);
+	~labelY.string = t[0];
 	a = "";
-	d = t[0].ascii;
+	d = t[1].ascii;
 	d.do{|e,i|
 		if(i < (d.size - 1), {
 			a = a ++ e.asAscii ++ "\n";
@@ -136,6 +121,8 @@ row.do{|i|
 ~turnTxt.stringColor = Color.black;
 ~turnTxt.font = Font("Arial", 30);
 ~turnTxt.align = \center;
-~turnTxt.addNotifier(\duel, \turnText, { |notif, value|
-	notif.listener.string = value;
+~turnTxt.addNotifier(\duel, \turnText, { | n, value |
+	"Explaining how we communicate turnText to the display: ".post;
+	[n, value].postln;
+	n.listener.string = value;
 })

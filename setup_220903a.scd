@@ -17,33 +17,46 @@ Duel.display;
 
 ~tactic = {|tactic, func|
 	~turn = ~turn + 1;
-	~turn.postln;
+	("Turn" + ~turn).postln;
+	// TODO !!!!!!!!!!!  ============
+	\duel.changed(\turnText, format("%:%", ~total, ~length - ~turn));
+	// ~turnTxt.string = ~length - ~turn;
 	~calcProfit.(tactic);
 	~colMatrix.(tactic);
 	~prevTactics[~player] = tactic;
 	~switchPlayers.();
 
-	t = ["PHOENIX", "ALBATROSS"][~chef + ~turn % 2] + "chose Tactic" + tactic;
+	t = ["PHOENIX", "ALBATROSS"][~game + ~turn % 2] + "chose Tactic" + tactic;
 	t.postln;
-	o = ~scores.rotate(~chef + 1);
+	o = ~scores.rotate(~game + 1);
 	(o[0] + ":" + o[1]).postln;
+	// TODO !!!!!!!!!!!  ============
+	\duel.changed(\score, [o]);
 	2.do{|i| ~scoTxt[i].string = o[i] };
-	~playerTxt[~turn + ~chef - 1 % 2].background = Color.new(1, 0.8, 0);
-	~playerTxt[~turn + ~chef % 2].background = Color.white;
+	// TODO !!!!!!!!!!!  ============
+	~playerTxt[~turn + ~game - 1 % 2].background = Color.new(1, 0.8, 0);
+	// TODO !!!!!!!!!!!  ============
+	~playerTxt[~turn + ~game % 2].background = Color.white;
 
 	// Finish the game
 	if(~turn == ~length, {
+
+	// TODO !!!!!!!!!!!  ============
 		~payTxt.do{|e| e.background = Color.white };
+	// TODO !!!!!!!!!!!  ============
 		2.do{|i| ~playerTxt[i].background = Color.white };
 		if(o[0] == o[1], {
 			"DRAW".postln;
+	// TODO !!!!!!!!!!!  ============
 			2.do{|i| ~winnerTxt[i].string = "DRAW" };
 		}, {
 			if(o[0] > o[1], {
 				"PHOENIX WINS".postln;
+	// TODO !!!!!!!!!!!  ============
 				~winnerTxt[0].string = "WINNER";
 			}, {
 				"ALBATROSS WINS".postln;
+	// TODO !!!!!!!!!!!  ============
 				~winnerTxt[1].string = "WINNER";
 			});
 		});
@@ -54,12 +67,12 @@ Duel.display;
 	func.value;
 };
 
-t = "ROUND " ++ ~round;
+t = "ROUND " ++ ~total;
 t.postln;
 
-t = ["PHOENIX", "ALBATROSS"][~chef];
+t = ["PHOENIX", "ALBATROSS"][~game];
 t = "FIRST ATTACK : " ++ t;
-~playerTxt[~chef].background = Color.new(1, 0.8, 0);
+~playerTxt[~game].background = Color.new(1, 0.8, 0);
 t.postln;
 
 // OscGroups.enable;
