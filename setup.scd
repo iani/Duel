@@ -1,13 +1,10 @@
-// ~path = thisProcess.nowExecutingPath.dirname;
-// (~path +/+ "func.scd").load;
 Duel.func;
 
 ~setup.();
 
-// (~path +/+ "display.scd").load;
 Duel.display;
 
-~player = 1;
+~player = ~chef;	// PHOENIX : ALBATROSS = Chef X : Y
 ~opponent = 1 - ~player;
 ~turn = -1;
 
@@ -18,49 +15,51 @@ Duel.display;
 ~tactic = {|tactic, func|
 	~turn = ~turn + 1;
 	("Turn" + ~turn).postln;
-	~turnTxt.string = ~length - ~turn;
+	\duel.changed(\turnText, format("%(%)", ~round, ~length - ~turn));
 	~calcProfit.(tactic);
 	~colMatrix.(tactic);
 	~prevTactics[~player] = tactic;
 	~switchPlayers.();
 
-	t = ["PHOENIX", "ALBATROSS"][~game + ~turn % 2] + "chose Tactic" + tactic;
+	t = ["PHOENIX", "ALBATROSS"][~chef + ~turn % 2] + "chose Tactic" + tactic;
 	t.postln;
-	o = ~scores.rotate(~game + 1);
-	(o[0] + ":" + o[1]).postln;
-	2.do{|i| ~scoTxt[i].string = o[i] };
-	~playerTxt[~turn + ~game - 1 % 2].background = Color.new(1, 0.8, 0);
-	~playerTxt[~turn + ~game % 2].background = Color.white;
+
+	o = ~scores;
+	// o = ~scores.rotate(~chef);
+	("Score" + o[0] + ":" + o[1]).postln;
+	\duel.changed(\score, [o]);
+	\duel.changed(\changePlayer, ~chef + ~turn + 1);
 
 	// Finish the game
 	if(~turn == ~length, {
-		~payTxt.do{|e| e.background = Color.white };
-		2.do{|i| ~playerTxt[i].background = Color.white };
+		\duel.changed(\clearPay);
+		\duel.changed(\clearPlayer);
+
 		if(o[0] == o[1], {
 			"DRAW".postln;
-			2.do{|i| ~winnerTxt[i].string = "DRAW" };
+			\duel.changed(\draw);
 		}, {
 			if(o[0] > o[1], {
 				"PHOENIX WINS".postln;
-				~winnerTxt[0].string = "WINNER";
+				\duel.changed(\winner, 0);
 			}, {
 				"ALBATROSS WINS".postln;
-				~winnerTxt[1].string = "WINNER";
+				\duel.changed(\winner, 1);
 			});
 		});
 	});
 
 	{ ~wd.front; }.defer;
+
 	// Evaluate the synth code
 	func.value;
 };
 
-t = "ROUND " ++ ~total;
+t = "ROUND " ++ ~round;
 t.postln;
 
-t = ["PHOENIX", "ALBATROSS"][~game];
+t = ["PHOENIX", "ALBATROSS"][~chef];
 t = "FIRST ATTACK : " ++ t;
-~playerTxt[~game].background = Color.new(1, 0.8, 0);
-t.postln;
 
-// OscGroups.enable;
+\duel.changed(\changePlayer, ~chef);
+t.postln;
