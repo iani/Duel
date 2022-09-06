@@ -16,6 +16,8 @@ Duel.display;
 	~turn = ~turn + 1;
 	("Turn" + ~turn).postln;
 	\duel.changed(\turnText, format("%(%)", ~round, ~length - ~turn));
+	~calcProfit.(tactic);
+	~colMatrix.(tactic);
 	~prevTactics[~player] = tactic;
 	~switchPlayers.();
 
