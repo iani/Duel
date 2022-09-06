@@ -1,0 +1,11 @@
+#+TITLE: Player Instructions220906
+
+* Start a new game:
+
+Duel.newgame;
+
+* Play a move in the game
+
+- Find the name of your player on the display window: the <player>
+- If <player> is written *vertically on the left side*, then choose from the vertical column which is highlighted the HIGHEST value.
+- If <player> is written *horizontally on the top*, then choose from the horizontal column which is highlighted the LOWEST value.
