@@ -1,0 +1,27 @@
+#+TITLE: Roadmap220907
+
+* Resend last sent code upon request
+:PROPERTIES:
+:DATE_ENTERED: [2022-09-07 Wed 08:57]
+:END:
+
+
+Several times the =newGame= command failed to execute on the remote partner's computer.
+To remedy this:
+
+- Add a simple chat scheme as a way to communicate while live coding within a session.
+- Add a way for a partner to request the resending of a code.
+
+ Alternatively:
+
+ The remote partner can execute the new game command locally - after it has been confirmed with the other partner via chat.
+
+* Chat and local code window
+
+** Basic version
+The window has the title (name) "Chat".
+It has the following text input fields, with the following labels displayed through StaticText, explaining their function:
+
+1. Send: [send the text in the input field to all partners via OscGroups]
+2. Received: [Display the text received from another partner]
+3. Run locally: [Evaluate the code from the field locally].
