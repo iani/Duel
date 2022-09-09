@@ -15,6 +15,10 @@ Chat and local evaluation window
 		}),
 		StaticText().string_("Received: "),
 		TextField().minHeight_(100),
+		// TODO: test the following:§ b
+		// .addOsc(\chatMessage, { | n, msg |
+		//    n.listener.string = msg[1];
+		i// 	}),
 		Button().states_([["Run locally: "]])
 		.action_({ \chat.changed(\runlocally) }),
 		TextField().minHeight_(100).addNotifier(\chat, \runlocally, { | n |
