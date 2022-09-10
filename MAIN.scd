@@ -29,5 +29,7 @@ Duel.newgame;
 
 \albatross.stop(5);
 
+//: FOR THE END
+
 
 Server.killAll;
